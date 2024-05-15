@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/scripts/index.html',
-    //   favicon: './src/images/favicon.ico',
+      favicon: './src/images/favicon.ico',
       minify: {
         removeRedundantAttributes: false, // do not remove type="text"
       }

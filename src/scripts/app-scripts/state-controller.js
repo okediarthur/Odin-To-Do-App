@@ -53,7 +53,7 @@ const project = {
         updateStorage(getState());
     },
     get(projectIndex){
-        return getState().projectss[projectIndex];
+        return getState().projects[projectIndex];
     }
 };
 

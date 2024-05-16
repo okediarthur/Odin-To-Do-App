@@ -55,6 +55,38 @@ const app = {
         }
     },
     showEditTask(taskIndex){
-        
+        const selectedProjectIndex = project.getSelectedIndex();
+        dialogs.renderTaskEdit(
+            getState().projects, task.get(selectedProjectIndex, taskIndex),
+            selectedProjectIndex
+        );
+    },
+    editTask(projectIndex, taskIndex, ...newTaskProperties){
+        const selectedProjectIndex = project.getSelectedIndex();
+
+        if(projectIndex !== selectedProjectIndex){
+            task.remove(selectedProjectIndex, taskIndex);
+            task.add(projectIndex, ...newTaskProperties);
+        } else{
+            task.replace(projectIndex, taskIndex, ...newTaskProperties);
+        }
+        renderTasks(project.get(selectedProjectIndex).tasks);
+    },
+    showDeleteTask(taskIndex){
+        dialogs.renderTaskDelete(
+            taskIndex, task.get(project.getSelectedIndex(), taskIndex)
+        );
+    },
+    deleteTask(taskIndex){
+        task.remove(project.getSelectedIndex(), taskIndex);
+        renderTasks(project.getSelected().tasks);
+    },
+    showTaskDetails(taskIndex){
+        dialogs.renderTaskDetails(
+            task.get(project.getSelectedIndex(), taskIndex),
+            project.getSelected(),
+        );
     }
-}
+};
+
+export default app;

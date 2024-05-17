@@ -1,29 +1,36 @@
-const projectBar = document.querySelector('.projects');
-const projectTemplate = document.querySelector('.projects-template').textContent
-    .firstElementChild.cloneNode(true);
+const projectsBar = document.querySelector('.projects');
+const projectTemplate = document.querySelector('.projects-template').content
+  .firstElementChild.cloneNode(true);
 
-function renderProjects(projects){
-    const fragment = document.createDocumentFragment();
-    projectsBar.textContent = '';
+function renderProjects(projects) {
+  const fragment = document.createDocumentFragment();
+  projectsBar.textContent = '';
 
-    projects.forEach((project, index) => {
-        const div = createProjectDiv(project, index);
-        fragment.appendChild(div);
-    });
+  projects.forEach((project, index) => {
+    const div = createProjectDiv(project, index);
+    fragment.appendChild(div);
+  });
 
-    projectBar.appendChild(fragment);
+  projectsBar.appendChild(fragment);
 }
 
-function createProjectDiv(project, index){
-    const projectDiv = projectTemplate.cloneNode(true);
-    const titleInsideDiv = projectDiv.querySelector('.item__name');
+function styleIfSelected(isSelected, projectDiv) {
+  if (!isSelected) return;
 
-    styleIfSelected(project.selected, projectDiv)
+  projectDiv.classList.add('focused-project');
+}
 
-    titleInsideDiv.textContent = project.name;
-    projectDiv.dataset.index = index;
 
-    return projectDiv;
+function createProjectDiv(project, index) {
+  const projectDiv = projectTemplate.cloneNode(true);
+  const titleInsideDiv = projectDiv.querySelector('.item__name');
+
+  styleIfSelected(project.selected, projectDiv)
+
+  titleInsideDiv.textContent = project.name;
+  projectDiv.dataset.index = index;
+
+  return projectDiv;
 }
 
 export default renderProjects;

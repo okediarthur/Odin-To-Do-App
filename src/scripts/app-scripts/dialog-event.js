@@ -25,7 +25,7 @@ class ShowEditProject {
   }
 
   handleClick() {
-    app.showEditProject(this.projectIndex);
+    app.showEditProject(this.projectIndex)
   }
 }
 
@@ -39,7 +39,7 @@ class ShowDeleteProject {
   }
 
   handleClick() {
-    app.showDeleteProject(this.projectIndex);
+    app.showDeleteProject(this.projectIndex)
   }
 }
 
@@ -62,6 +62,7 @@ class ShowAddTask {
     app.showAddTask();
   }
 }
+
 
 class ShowEditTask {
   static canHandle(event) {

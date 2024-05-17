@@ -1,6 +1,6 @@
 import { getState } from "./state";
 import { task, project } from './state-controller';
-import { renderProjects } from './render-project';
+import renderProjects  from './render-project';
 import { renderMain, renderTasks, renderHead } from './render-main';
 import dialogs from "./render-dialogs"; 
 

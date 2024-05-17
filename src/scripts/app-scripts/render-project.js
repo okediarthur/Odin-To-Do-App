@@ -11,7 +11,7 @@ function renderProjects(projects){
         fragment.appendChild(div);
     });
 
-    projectsBar.appendChild(fragment);
+    projectBar.appendChild(fragment);
 }
 
 function createProjectDiv(project, index){

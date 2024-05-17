@@ -1,4 +1,4 @@
-import { projectDom, taskDom } from './dialgo-cache';
+import { projectDom, taskDom } from './dialog-cache';
 import { format } from "date-fns";
 import { task } from './state-controller';
 
@@ -65,7 +65,7 @@ const dialogs = {
     }
 };
 
-function getOptions(projects){
+function populateTaskEdit(projects){
     taskDom.inputTitle.value = task.title;
     taskDom.inputDescription.value = task.description;
     taskDom.inputDate.value = task.dueDate;

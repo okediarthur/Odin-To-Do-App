@@ -1,25 +1,28 @@
 const eventClasses = [];
 document.addEventListener('click', checkClickTarget);
 
-function checkClickTarget(event){
+function checkClickTarget(event) {
     const handlerClass = eventClasses
-        .find(eventClass => eventClass.canhandle(event));
-
-    new handlerClass(event).handleClick();
+        .find(eventClass => eventClass.canHandle(event)); 
+    if (handlerClass) { // Added safety check
+        new handlerClass(event).handleClick();
+    }
 }
 
-function registerEvent(eventClass){
+function registerEvent(eventClass) {
     eventClasses.unshift(eventClass);
 }
 
 class Default {
-    static canHandle(event){
+    static canHandle(event) {
         return true;
     }
 
-    handleClick(){
+    handleClick() {
         return;
     }
 }
+
 registerEvent(Default);
+
 export default registerEvent;

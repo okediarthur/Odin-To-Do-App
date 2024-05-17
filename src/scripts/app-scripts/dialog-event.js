@@ -1,111 +1,111 @@
 import registerEvent from "./events";
-import app from "./app-logic";
+import app from './app-logic';
 
 class CancelDialog {
-    static canHandle(event){
-        return event.target.matches('dailog button.cancel, dialog button.exit');
-    }
+  static canHandle(event) {
+    return event.target.matches('dialog button.cancel, dialog button.exit');
+  }
 
-    constructor(event){
-        this.openedDialog = document.querySelector('dialog[open]');
-    }
+  constructor(event) {
+    this.openedDialog = document.querySelector('dialog[open]');
+  }
 
-    handleClick(){
-        this.openedDialog.close();
-    }
+  handleClick() {
+    this.openedDialog.close();
+  }
 }
 
 class ShowEditProject {
-    static canHandle(event){
-        return event.target.matches('.projects button.edit');
-    }
+  static canHandle(event) {
+    return event.target.matches('.projects button.edit');
+  }
 
-    constructor(event) {
-        this.projectIndex = Number(event.target.parentElement.dataset.index);
-    }
+  constructor(event) {
+    this.projectIndex = Number(event.target.parentElement.dataset.index);
+  }
 
-    handleClick(){
-        app.ShowEditProject(this.projectIndex)
-    }
+  handleClick() {
+    app.showEditProject(this.projectIndex);
+  }
 }
 
 class ShowDeleteProject {
-    static canHandle(event) {
-        return event.target.matches('.projects button.delete');
-    }
+  static canHandle(event) {
+    return event.target.matches('.projects button.delete');
+  }
 
-    constructor(event){
-        thisprojectIndex = Number(event.target.parentElement.dataset.index);
-    }
+  constructor(event) {
+    this.projectIndex = Number(event.target.parentElement.dataset.index);
+  }
 
-    handleClick(){
-        app.ShowDeleteProject(this.projectIndex)
-    }
+  handleClick() {
+    app.showDeleteProject(this.projectIndex);
+  }
 }
 
-class ShowAddProject{
-    static canHandle(event){
-        return event.target.matches('button.add-projects');
-    }
+class ShowAddProject {
+  static canHandle(event) {
+    return event.target.matches('button.add-projects');
+  }
 
-    handleClick(){
-        app.ShowAddProject();
-    }
+  handleClick() {
+    app.showAddProject();
+  }
 }
 
-class ShowAddTask{
-    static canHandle(event){
-        return event.target.matches('button.add-todos');
-    }
+class ShowAddTask {
+  static canHandle(event) {
+    return event.target.matches('button.add-todos');
+  }
 
-    handleClick(){
-        app.ShowAddTask();
-    }
+  handleClick() {
+    app.showAddTask();
+  }
 }
 
-class ShowEditTask{
-    static canHandle(event){
-        return event.target.matches('.projects button.todo-edit');
-    }
+class ShowEditTask {
+  static canHandle(event) {
+    return event.target.matches('button.todo-edit');
+  }
 
-    constructor(event){
-        this.taskIndex = Number(event.target.parentElement.dataset.index);
-    }
+  constructor(event) {
+    this.taskIndex = Number(event.target.parentElement.dataset.index);
+  }
 
-    handleClick(){
-        app.ShowEditTask(this.taskIndex);
-    }
-
+  handleClick() {
+    app.showEditTask(this.taskIndex);
+  }
 }
-class ShowDeleteTask{
-    static canHandle(event){
-        return event.target.matches('button.todo-delete');
-    }
 
-    constructor(event){
-        this.taskIndex = Number(event.target.parentElement.dataset.index);
-    }
+class ShowDeleteTask {
+  static canHandle(event) {
+    return event.target.matches('button.todo-delete');
+  }
 
-    handleClick(){
-        app.ShowDeleteTask(this.taskIndex);
-    }
+  constructor(event) {
+    this.taskIndex = Number(event.target.parentElement.dataset.index);
+  }
+
+  handleClick() {
+    app.showDeleteTask(this.taskIndex);
+  }
 }
 
 class ShowTaskDetails {
-    static canHandle(event){
-        return event.target.matches('button.todo-expand');
-    }
+  static canHandle(event) {
+    return event.target.matches('button.todo-expand');
+  }
 
-    constructor(event){
-        this.taskIndex = Number(event.target.parentElement.dataset.index);
-    }
+  constructor(event) {
+    this.taskIndex = Number(event.target.parentElement.dataset.index);
+  }
 
-    handleClick(){
-        app.showTaskDetails(this.taskIndex);
-    }
+  handleClick() {
+    app.showTaskDetails(this.taskIndex);
+  }
 }
 
-registerEvent(showEditProject);
+registerEvent(ShowEditProject);
 registerEvent(CancelDialog);
 registerEvent(ShowDeleteProject);
 registerEvent(ShowAddProject);
@@ -113,5 +113,3 @@ registerEvent(ShowAddTask);
 registerEvent(ShowEditTask);
 registerEvent(ShowDeleteTask);
 registerEvent(ShowTaskDetails);
-
-
